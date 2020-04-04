@@ -9,7 +9,8 @@ class App extends Component {
       { name: "Max", age: 28 },
       { name: "Stephanie", age: 26 },
       { name: "AC", age: 24 }
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -34,6 +35,10 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+
+  }
+
 render() {
   const style = {
     backgroundColor: 'white',
@@ -48,7 +53,9 @@ render() {
       <p>This is really working!</p>
       <button 
         style={style}
-        onClick={() => this.switchNameHandler("AC!!!")}>Switch Name</button> {/* Convenient syntax but can be inefficient*/}
+        onClick={this.togglePersonsHandler}>Switch Name</button> {/* Convenient syntax but can be inefficient*/}
+        {this.state.showPersons ? 
+        <div>
       <Person 
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age} />
@@ -60,6 +67,8 @@ render() {
       <Person 
         name={this.state.persons[2].name} 
         age={this.state.persons[2].age} />
+        </div> 
+        : null}
     </div>
   )}
   // the code above gets compiled to the javascript code below 
