@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
-import Radium, {StyleRoot} from 'radium'
-import styled from 'styled-components'
+// import Radium, {StyleRoot} from 'radium'
+// import styled from 'styled-components'
 
-const StyledButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green'};
-  color: white;
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
+// const StyledButton = styled.button`
 
-  &:hover {
-    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-    color: black;
-  }
-`
+// `
 
 
 class App extends Component {
@@ -92,30 +82,30 @@ render() {
     // }
   }
 
-  const classes = []
+  const assignedClasses = []
   if(this.state.persons.length <= 2){
-    classes.push('red') // classes = ['red']
+    assignedClasses.push(classes.red) // assignedClasses = ['red']
   }
   if(this.state.persons.length <= 1){
-    classes.push('bold') // classes = ['red', 'bold']
+    assignedClasses.push(classes.bold) // assignedClasses = ['red', 'bold']
   }
 
 
   return (
-    <StyleRoot>
-    <div className="App">
+   // <StyleRoot>
+    <div className={classes.App}>
       <h1>Hi, I'm a React App</h1>
-      <p className={classes.join(' ')}>This is really working!</p>
-      <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
+      <p className={assignedClasses.join(' ')}>This is really working!</p>
+      <button className={classes.button} onClick={this.togglePersonsHandler}>
         Toggle Persons
-      </StyledButton>
+      </button>
         {persons}
     </div>
-    </StyleRoot>
+   // </StyleRoot>
   )}
   // the code above gets compiled to the javascript code below 
   // return React.createElement('div', null, React.createElement('h1', {className: 'App'}, "does this work now?"))
 }
 
 
-export default Radium(App);
+export default App
