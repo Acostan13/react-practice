@@ -4,11 +4,11 @@ import classes from './Person.css'
 // import styled from 'styled-components'
 //const Button = styled.button``
 const person = (props) => {
-    const rnd = Math.random()
+    // const rnd = Math.random()
 
-    if(rnd > 0.7) {
-        throw new Error('Something went wrong')
-    }
+    // if(rnd > 0.7) {
+    //     throw new Error('Something went wrong')
+    // }
     return (
 
         <div className={classes.Person}>
@@ -20,4 +20,4 @@ const person = (props) => {
 
 }
 
-export default person
+export default person;
