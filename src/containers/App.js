@@ -12,7 +12,14 @@ class App extends Component {
       Render Child Components
       componentDidMount() => Cause Side-Effects
   */
-
+  /* Component Lifecycle - Update
+      getDerivedStateFromProps(props, state) => Sync State to Props
+      shouldComponentUpdate(nextProps, nextState) => Decide whether to Continue or Not (may cancel updating process)
+      render() => Prepare & Structure your JSX code
+      Update Childen Component Props
+      getSnapshotBeforeUpdate(prevProps, prevState) => Last-minute DOM ops
+      componentDidUpdate() => Cause Side-Effects
+  */
   constructor(props) {
     super(props);
     console.log('[App.js] constructor')
@@ -28,18 +35,26 @@ class App extends Component {
     showPersons: false
   }
 
-  // Component Lifecycle - Create
   static getDerivedStateFromProps(props, state) {
     console.log('[App.js] getDerivedStateFromProps', props)
     return state
   }
 
-  componentWillMount(){
-    console.log('[App.js] componentWillMount')
-  }
+  // componentWillMount(){
+  //   console.log('[App.js] componentWillMount')
+  // }
 
   componentDidMount(){
     console.log('[App.js] componentDidMount')
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('[App.js] shouldComponentUpdate')
+    return true
+  }
+
+  componentDidUpdate(){
+    console.log('[App.js] componentDidUpdate')
   }
 
   nameChangedHandler = ( event, id ) => {
