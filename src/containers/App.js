@@ -5,6 +5,19 @@ import Cockpit from '../components/Cockpit/Cockpit'
 //import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
+  /* Component Lifecycle - Creation:
+      constructor(props) => Call super(props)
+      getDerivedStateFromProps(props, state) => Sync state
+      render() => Prepare & Structure your JSX code
+      Render Child Components
+      componentDidMount() => Cause Side-Effects
+  */
+
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor')
+
+  }
   state = {
     persons: [
       { id: 'asfa1', name: 'Max', age: 28 },
@@ -13,6 +26,20 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false
+  }
+
+  // Component Lifecycle - Create
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props)
+    return state
+  }
+
+  componentWillMount(){
+    console.log('[App.js] componentWillMount')
+  }
+
+  componentDidMount(){
+    console.log('[App.js] componentDidMount')
   }
 
   nameChangedHandler = ( event, id ) => {
@@ -47,6 +74,9 @@ class App extends Component {
   }
 
   render () {
+
+    console.log('[App.js] render')
+
     let persons = null;
 
     if ( this.state.showPersons ) {
@@ -59,7 +89,8 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit 
+        <Cockpit
+          title={this.props.appTitle} 
           showPersons={this.state.showPersons}
           persons={this.state.persons}
           clicked={this.togglePersonsHandler}/>
