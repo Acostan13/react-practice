@@ -3,6 +3,7 @@ import withClass from '../../../hoc/withClass'
 import Aux from '../../../hoc/Auxiliary'
 import classes from './Person.css'
 import PropTypes from 'prop-types'
+import AuthContext from '../../../context/auth-context'
 //import Radium from 'radium'
 // import styled from 'styled-components'
 //const Button = styled.button``
@@ -12,7 +13,7 @@ class Person extends Component {
         this.inputElementRef = React.createRef()
     }
 
-    componentDidMount(){
+    componentDidMount() {
         //this.inputElement.focus()
         this.inputElementRef.current.focus()
     }
@@ -21,8 +22,13 @@ class Person extends Component {
         return (
             // Fragment is used as an empty wrapper
             <Aux>
-                {this.props.isAuth ? <p>Authenticated</p> : <p>Please log in</p>}
-                <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old</p>
+                <AuthContext.Consumer>
+                    {(context) => context.authenticated ? <p>Authenticated</p> : <p>Please log in</p>}
+                </AuthContext.Consumer>
+
+                <p onClick={this.props.click}>
+                    I'm {this.props.name} and I am {this.props.age} years old
+                </p>
                 <p key='i2'>{this.props.children}</p>
                 <input
                     key='i3'

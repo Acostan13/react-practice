@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import Person from './Person/Person'
+//import AuthContext from '../../context/auth-context'
 
 // Pure Component already implements shoudComponentUpdate with a complete props check
 class Persons extends PureComponent {
@@ -25,34 +26,34 @@ class Persons extends PureComponent {
     //     }
     // }
 
-    getSnapshotBeforeUpdate(prevProps, prevState){
+    getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapShotBeforeUpdate')
-        return {message: 'Snapshot!'}
+        return { message: 'Snapshot!' }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){
+    componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('[Persons.js] componentDidUpdate')
         console.log(snapshot)
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         console.log('[Persons.js] componentWillUnmount')
     }
 
     render() {
         console.log('[Persons.js] rendering...')
         return this.props.persons.map((person, index) => {
-            return (
-                <Person
-                    click={() => this.props.clicked(index)}
-                    name={person.name}
-                    age={person.age}
-                    key={person.id}
-                    changed={(e) => this.props.changed(e, person.id)}
-                    isAuth={this.props.isAuthenticated}
-                 />
-            )
-        })
+                return (
+                    <Person
+                        click={() => this.props.clicked(index)}
+                        name={person.name}
+                        age={person.age}
+                        key={person.id}
+                        changed={(e) => this.props.changed(e, person.id)}
+                    />
+                )
+            })
+        
     }
 }
 
