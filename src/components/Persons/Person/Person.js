@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import Aux from '../../../hoc/Auxiliary'
-import classes from './Person.css'
+import React, { Component, Fragment } from 'react'
+//import classes from './Person.css'
 //import Radium from 'radium'
 // import styled from 'styled-components'
 //const Button = styled.button``
@@ -8,8 +7,8 @@ class Person extends Component {
     render() {
         console.log('[Person.js] rendering...')
         return (
-            // Aux is used as an empty wrapper
-            <Aux>
+            // Fragment is used as an empty wrapper
+            <Fragment>
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old</p>
                 <p key='i2'>{this.props.children}</p>
                 <input
@@ -18,7 +17,7 @@ class Person extends Component {
                     onChange={this.props.changed}
                     value={this.props.name}
                 />
-            </Aux>
+            </Fragment>
         )
     }
 }
